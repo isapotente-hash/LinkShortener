@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NovaLink is a modern SaaS URL shortener with branded links, QR codes, analytics, password protection, and developer APIs."
+    />
+    <meta name="theme-color" content="#09090f" />
+    <title>NovaLink — Short links, live analytics, and QR codes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="NovaLink home">
+        <span class="brand-mark">N</span>
+        <span>NovaLink</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#api">API</a>
+      </nav>
+      <div class="header-actions">
+        <a class="ghost-link" href="#auth">Login</a>
+        <a class="button button-small" href="#shorten">Launch app</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero section-pad">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse-dot"></span> Real-time link intelligence</div>
+          <h1>Short links that look premium and perform at SaaS speed.</h1>
+          <p>
+            Create branded short URLs, generate QR codes, protect links with passwords,
+            and watch live analytics update inside a sleek dark-mode workspace.
+          </p>
+          <div class="hero-actions">
+            <a class="button glow" href="#shorten">Shorten a link</a>
+            <a class="button button-muted" href="#api">View API docs</a>
+          </div>
+          <div class="trust-row" aria-label="Product highlights">
+            <span>99.99% uptime</span>
+            <span>Spam shield</span>
+            <span>CSV import</span>
+          </div>
+        </div>
+
+        <div class="hero-demo glass-card reveal" id="shorten">
+          <div class="browser-bar">
+            <span></span><span></span><span></span>
+            <strong>novalink.app/create</strong>
+          </div>
+          <form id="shortenForm" class="shortener-form">
+            <label for="longUrl">Destination URL</label>
+            <div class="input-row">
+              <input id="longUrl" type="url" placeholder="https://example.com/very/long/campaign-url" required />
+              <button class="button" type="submit">Shorten</button>
+            </div>
+            <div class="advanced-grid">
+              <label>
+                Custom alias
+                <span class="inline-action">
+                  <input id="customAlias" type="text" placeholder="study" pattern="[a-zA-Z0-9-]+" />
+                  <button id="randomAlias" class="chip" type="button">Random</button>
+                </span>
+              </label>
+              <label>
+                Expiration
+                <select id="expiresIn">
+                  <option value="never">Never</option>
+                  <option value="7 days">7 days</option>
+                  <option value="30 days">30 days</option>
+                  <option value="90 days">90 days</option>
+                </select>
+              </label>
+              <label>
+                Password protection
+                <input id="linkPassword" type="password" placeholder="Optional password" />
+              </label>
+            </div>
+          </form>
+          <div id="resultCard" class="result-card is-hidden" aria-live="polite">
+            <div>
+              <span>Short URL</span>
+              <strong id="shortUrl">novalink.app/launch</strong>
+            </div>
+            <button id="copyButton" class="copy-button" type="button">Copy</button>
+          </div>
+          <div class="qr-panel">
+            <div id="qrCode" class="qr-code" aria-label="Generated QR code"></div>
+            <div>
+              <strong>Instant QR codes</strong>
+              <p>Every short link gets a branded QR preview ready for campaigns and print assets.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section-pad">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Feature suite</span>
+          <h2>Everything teams need to launch, track, and protect links.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal"><span>⚡</span><h3>Instant shortening</h3><p>Paste a long URL and generate a memorable NovaLink in milliseconds.</p></article>
+          <article class="feature-card reveal"><span>✨</span><h3>Custom aliases</h3><p>Reserve branded slugs like <code>novalink.app/study</code> or use the random alias generator.</p></article>
+          <article class="feature-card reveal"><span>🔐</span><h3>Protected links</h3><p>Add passwords, expiration windows, and spam-aware rate limits for safer sharing.</p></article>
+          <article class="feature-card reveal"><span>📊</span><h3>Live analytics</h3><p>Track clicks by country, device, browser, and campaign with animated counters.</p></article>
+          <article class="feature-card reveal"><span>📦</span><h3>Bulk tools</h3><p>Drag and drop CSVs to shorten lists, search saved links, and filter by status.</p></article>
+          <article class="feature-card reveal"><span>🧑‍💻</span><h3>Developer API</h3><p>Automate link creation with clear API docs, keys, and production-ready examples.</p></article>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section-pad dashboard-shell">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Workspace</span>
+          <h2>Manage every link from one responsive dashboard.</h2>
+        </div>
+        <div class="dashboard-grid">
+          <aside class="glass-card sidebar reveal">
+            <a class="active" href="#dashboard">Overview</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#api">API keys</a>
+            <a href="#auth">Account</a>
+            <a href="#admin">Admin</a>
+          </aside>
+          <div class="glass-card link-manager reveal">
+            <div class="manager-toolbar">
+              <div>
+                <h3>Saved links</h3>
+                <p>Search, filter, edit, and delete your shortened URLs.</p>
+              </div>
+              <input id="linkSearch" type="search" placeholder="Search links..." />
+            </div>
+            <div id="csvDrop" class="drop-zone">Drag & drop CSV here for bulk URL shortening</div>
+            <div id="linkList" class="link-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="analytics" class="section-pad analytics-section">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Live analytics</span>
+          <h2>Know exactly where your traffic comes from.</h2>
+        </div>
+        <div class="stats-grid reveal">
+          <article><span>Total clicks</span><strong class="counter" data-target="128430">0</strong></article>
+          <article><span>Live visitors</span><strong id="liveCounter">42</strong></article>
+          <article><span>Countries</span><strong class="counter" data-target="86">0</strong></article>
+          <article><span>Conversions</span><strong class="counter" data-target="18420">0</strong></article>
+        </div>
+        <div class="analytics-grid">
+          <article class="glass-card reveal">
+            <h3>Countries</h3>
+            <div class="bar"><span style="width: 78%"></span><em>United States</em></div>
+            <div class="bar"><span style="width: 54%"></span><em>Germany</em></div>
+            <div class="bar"><span style="width: 41%"></span><em>Brazil</em></div>
+          </article>
+          <article class="glass-card reveal">
+            <h3>Devices</h3>
+            <div class="donut" aria-label="Device split chart"></div>
+            <p>Mobile 58% · Desktop 34% · Tablet 8%</p>
+          </article>
+          <article class="glass-card reveal">
+            <h3>Browsers</h3>
+            <ul class="browser-list"><li>Chrome <strong>61%</strong></li><li>Safari <strong>24%</strong></li><li>Firefox <strong>9%</strong></li><li>Edge <strong>6%</strong></li></ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="pricing" class="section-pad">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2>Start free, scale when your links do.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card reveal"><h3>Starter</h3><strong>$0</strong><p>Personal branded links and QR codes.</p><ul><li>100 links/month</li><li>Basic analytics</li><li>Community support</li></ul><a class="button button-muted" href="#auth">Get started</a></article>
+          <article class="price-card featured reveal"><span class="badge">Popular</span><h3>Growth</h3><strong>$19</strong><p>For creators and teams growing campaigns.</p><ul><li>10k links/month</li><li>Advanced analytics</li><li>CSV imports</li></ul><a class="button glow" href="#auth">Start trial</a></article>
+          <article class="price-card reveal"><h3>Scale</h3><strong>$79</strong><p>Enterprise controls and admin tools.</p><ul><li>Unlimited links</li><li>SSO and audit logs</li><li>Priority support</li></ul><a class="button button-muted" href="#auth">Contact sales</a></article>
+        </div>
+      </section>
+
+      <section id="auth" class="section-pad auth-api-grid">
+        <div class="glass-card reveal auth-card">
+          <span class="eyebrow">Account</span>
+          <h2>Login or signup</h2>
+          <form id="authForm">
+            <input type="email" placeholder="you@company.com" required />
+            <input type="password" placeholder="Password" required />
+            <button class="button glow" type="submit">Continue securely</button>
+          </form>
+          <p id="authMessage">Your saved links sync across the dashboard instantly.</p>
+        </div>
+        <div id="api" class="glass-card reveal api-card">
+          <span class="eyebrow">Developers</span>
+          <h2>API documentation</h2>
+          <pre><code>POST /v1/links
+Authorization: Bearer NOVA_API_KEY
+{
+  "url": "https://example.com",
+  "alias": "launch",
+  "expiresIn": "30 days"
+}</code></pre>
+          <p>Rate limits, abuse detection, password links, previews, and QR endpoints are built in.</p>
+        </div>
+      </section>
+
+      <section id="admin" class="section-pad testimonial-faq">
+        <div class="glass-card reveal">
+          <span class="eyebrow">Admin dashboard</span>
+          <h2>Moderation, rate limiting, and spam protection.</h2>
+          <p>Review suspicious domains, throttle high-volume users, and monitor API usage from a Vercel-inspired admin console.</p>
+        </div>
+        <div class="glass-card reveal">
+          <span class="eyebrow">Link preview</span>
+          <h2>Preview before redirecting.</h2>
+          <p>NovaLink can show destination metadata, safety status, and password prompts before visitors continue.</p>
+        </div>
+      </section>
+
+      <section class="section-pad testimonial-faq">
+        <div class="testimonials reveal">
+          <article>“NovaLink replaced three tools for our launch team.”<strong>— Maya, Growth Lead</strong></article>
+          <article>“The interface feels like Discord, Vercel, and Notion had a very productive sprint.”<strong>— Theo, Founder</strong></article>
+          <article>“Bulk CSV shortening saved our agency hours every week.”<strong>— Priya, Ops</strong></article>
+        </div>
+        <div class="faq reveal">
+          <h2>FAQ</h2>
+          <details open><summary>Can I use custom aliases?</summary><p>Yes. Create custom slugs or generate a random alias automatically.</p></details>
+          <details><summary>Do links expire?</summary><p>Choose no expiration or set 7, 30, or 90 day windows while creating links.</p></details>
+          <details><summary>Is this production-ready?</summary><p>This front-end prototype demonstrates production SaaS behavior and can be connected to any backend.</p></details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#home"><span class="brand-mark">N</span><span>NovaLink</span></a>
+      <p>© 2026 NovaLink. Shorten beautifully.</p>
+      <div><a href="#">X</a><a href="#">GitHub</a><a href="#">LinkedIn</a></div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Copied to clipboard</div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
