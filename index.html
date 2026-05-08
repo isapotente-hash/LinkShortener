@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A modern URL shortener with custom links, QR codes, real local analytics, password protection, and developer APIs."
+    />
+    <meta name="theme-color" content="#09090f" />
+    <title>Short links, real analytics, and QR codes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="brand-mark">↗</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#api">API</a>
+      </nav>
+      <div class="header-actions">
+        <a class="ghost-link" href="#auth">Login</a>
+        <a class="button button-small" href="#shorten">Launch app</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero section-pad">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse-dot"></span> Real-time link intelligence</div>
+          <h1>Short links that look premium and perform at SaaS speed.</h1>
+          <p>
+            Create only the custom short URL you choose, generate QR codes, protect links with passwords,
+            and watch real local analytics update when your saved links are opened.
+          </p>
+          <div class="hero-actions">
+            <a class="button glow" href="#shorten">Shorten a link</a>
+            <a class="button button-muted" href="#api">View API docs</a>
+          </div>
+          <div class="trust-row" aria-label="Product highlights">
+            <span>Verified local metrics</span>
+            <span>Spam shield UI</span>
+            <span>CSV import</span>
+          </div>
+        </div>
+
+        <div class="hero-demo glass-card reveal" id="shorten">
+          <div class="browser-bar">
+            <span></span><span></span><span></span>
+            <strong>custom-short-url</strong>
+          </div>
+          <form id="shortenForm" class="shortener-form">
+            <label for="longUrl">Destination URL</label>
+            <div class="input-row">
+              <input id="longUrl" type="text" inputmode="url" placeholder="https://example.com/very/long/campaign-url" required />
+              <button class="button" type="submit">Shorten</button>
+            </div>
+            <div class="advanced-grid">
+              <label>
+                Custom short URL
+                <span class="inline-action">
+                  <input id="customUrl" type="text" inputmode="url" placeholder="https://your-domain.com/study" required />
+                  <button id="randomAlias" class="chip" type="button">Random path</button>
+                </span>
+              </label>
+              <label>
+                Expiration
+                <select id="expiresIn">
+                  <option value="never">Never</option>
+                  <option value="7 days">7 days</option>
+                  <option value="30 days">30 days</option>
+                  <option value="90 days">90 days</option>
+                </select>
+              </label>
+              <label>
+                Password protection
+                <input id="linkPassword" type="password" placeholder="Optional password" />
+              </label>
+            </div>
+          </form>
+          <div id="resultCard" class="result-card is-hidden" aria-live="polite">
+            <div>
+              <span>Short URL</span>
+              <strong id="shortUrl">Add your custom short URL</strong>
+            </div>
+            <button id="copyButton" class="copy-button" type="button">Copy</button>
+          </div>
+          <div class="qr-panel">
+            <div id="qrCode" class="qr-code" aria-label="Generated QR code"></div>
+            <div>
+              <strong>Instant QR codes</strong>
+              <p>Every custom short URL gets a QR preview ready for campaigns and print assets.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section-pad">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Feature suite</span>
+          <h2>Everything teams need to launch, track, and protect links.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal"><span>⚡</span><h3>Instant shortening</h3><p>Paste a long URL and save the exact custom short URL you want.</p></article>
+          <article class="feature-card reveal"><span>✨</span><h3>Custom URLs</h3><p>Use your own short URL, such as <code>https://your-domain.com/study</code>, or generate a random path.</p></article>
+          <article class="feature-card reveal"><span>🔐</span><h3>Protected links</h3><p>Add passwords, expiration windows, and spam-aware rate limits for safer sharing.</p></article>
+          <article class="feature-card reveal"><span>📊</span><h3>Real analytics</h3><p>Track only recorded local link opens; unavailable country data is clearly marked instead of invented.</p></article>
+          <article class="feature-card reveal"><span>📦</span><h3>Bulk tools</h3><p>Drag and drop CSVs to shorten lists, search saved links, and filter by status.</p></article>
+          <article class="feature-card reveal"><span>🧑‍💻</span><h3>Developer API</h3><p>Automate link creation with clear API docs, keys, and production-ready examples.</p></article>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section-pad dashboard-shell">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Workspace</span>
+          <h2>Manage every link from one responsive dashboard.</h2>
+        </div>
+        <div class="dashboard-grid">
+          <aside class="glass-card sidebar reveal">
+            <a class="active" href="#dashboard">Overview</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#api">API keys</a>
+            <a href="#auth">Account</a>
+            <a href="#admin">Admin</a>
+          </aside>
+          <div class="glass-card link-manager reveal">
+            <div class="manager-toolbar">
+              <div>
+                <h3>Saved links</h3>
+                <p>Search, filter, edit, and delete your custom URLs.</p>
+              </div>
+              <input id="linkSearch" type="search" placeholder="Search links..." />
+            </div>
+            <div id="csvDrop" class="drop-zone">Drag & drop CSV here for bulk URL shortening</div>
+            <div id="linkList" class="link-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="analytics" class="section-pad analytics-section">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Real-time local analytics</span>
+          <h2>Analytics update from recorded local opens only.</h2>
+        </div>
+        <div class="stats-grid reveal">
+          <article><span>Total opens</span><strong id="totalOpens">0</strong></article>
+          <article><span>Live visitors</span><strong id="liveCounter">0</strong></article>
+          <article><span>Countries</span><strong id="countryCount">0</strong></article>
+          <article><span>Conversions</span><strong id="conversionCount">0</strong></article>
+        </div>
+        <div class="analytics-grid">
+          <article class="glass-card reveal">
+            <h3>Countries</h3>
+            <div id="countryAnalytics" class="analytics-list"><span>No country data recorded locally.</span></div>
+          </article>
+          <article class="glass-card reveal">
+            <h3>Devices</h3>
+            <div id="deviceAnalytics" class="analytics-list"><span>No device opens yet.</span></div>
+          </article>
+          <article class="glass-card reveal">
+            <h3>Browsers</h3>
+            <div id="browserAnalytics" class="analytics-list"><span>No browser opens yet.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="pricing" class="section-pad">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Pricing UI</span>
+          <h2>Example tiers for connecting to a billing backend.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card reveal"><h3>Starter</h3><strong>$0</strong><p>Personal custom links and QR codes.</p><ul><li>100 links/month</li><li>Local analytics</li><li>Community support</li></ul><a class="button button-muted" href="#auth">Get started</a></article>
+          <article class="price-card featured reveal"><span class="badge">Popular</span><h3>Growth</h3><strong>$19</strong><p>For creators and teams growing campaigns.</p><ul><li>10k links/month</li><li>Advanced analytics</li><li>CSV imports</li></ul><a class="button glow" href="#auth">Start trial</a></article>
+          <article class="price-card reveal"><h3>Scale</h3><strong>$79</strong><p>Enterprise controls and admin tools.</p><ul><li>Unlimited links</li><li>SSO and audit logs</li><li>Priority support</li></ul><a class="button button-muted" href="#auth">Contact sales</a></article>
+        </div>
+      </section>
+
+      <section id="auth" class="section-pad auth-api-grid">
+        <div class="glass-card reveal auth-card">
+          <span class="eyebrow">Account</span>
+          <h2>Login or signup</h2>
+          <form id="authForm">
+            <input type="email" placeholder="you@company.com" required />
+            <input type="password" placeholder="Password" required />
+            <button class="button glow" type="submit">Continue securely</button>
+          </form>
+          <p id="authMessage">Your saved links sync across the dashboard instantly.</p>
+        </div>
+        <div id="api" class="glass-card reveal api-card">
+          <span class="eyebrow">Developers</span>
+          <h2>API documentation</h2>
+          <pre><code>POST /v1/links
+Authorization: Bearer YOUR_API_KEY
+{
+  "destinationUrl": "https://example.com",
+  "shortUrl": "https://your-domain.com/study",
+  "expiresIn": "30 days"
+}</code></pre>
+          <p>Use this contract as a backend integration guide for rate limits, abuse checks, password links, previews, and QR endpoints.</p>
+        </div>
+      </section>
+
+      <section id="admin" class="section-pad testimonial-faq">
+        <div class="glass-card reveal">
+          <span class="eyebrow">Admin dashboard</span>
+          <h2>Moderation, rate limiting, and spam protection.</h2>
+          <p>This UI is ready to connect to real moderation queues, throttling rules, and API usage data from your backend.</p>
+        </div>
+        <div class="glass-card reveal">
+          <span class="eyebrow">Link preview</span>
+          <h2>Preview before redirecting.</h2>
+          <p>The preview can show destination metadata, safety status, and password prompts before visitors continue.</p>
+        </div>
+      </section>
+
+      <section class="section-pad testimonial-faq">
+        <div class="testimonials reveal">
+          <article>Use the Open action on saved links to record real local opens.<strong>Analytics note</strong></article>
+          <article>Country and conversion data are intentionally blank until a backend provides verified events.<strong>No invented data</strong></article>
+          <article>CSV import, accounts, admin, and API sections are polished frontend states ready for backend wiring.<strong>Integration note</strong></article>
+        </div>
+        <div class="faq reveal">
+          <h2>FAQ</h2>
+          <details open><summary>Can I use custom URLs?</summary><p>Yes. Enter the full custom short URL you want, or generate a random path for the domain you entered.</p></details>
+          <details><summary>Do links expire?</summary><p>Choose no expiration or set 7, 30, or 90 day windows while creating links.</p></details>
+          <details><summary>Is this production-ready?</summary><p>This front-end prototype demonstrates the interface and can be connected to your own backend for real redirects, accounts, and analytics.</p></details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#home" aria-label="Home"><span class="brand-mark">↗</span></a>
+      <p>© 2026. Shorten beautifully.</p>
+      <div><a href="#">X</a><a href="#">GitHub</a><a href="#">LinkedIn</a></div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Copied to clipboard</div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
